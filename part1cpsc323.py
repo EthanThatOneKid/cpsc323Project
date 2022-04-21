@@ -5,6 +5,7 @@
 txt = open('finalp1.txt')
 f = open('finalp2.txt', 'w')
 
+EMPTY_SPACE = ' '
 (ASTERISK, SLASH) = ('*', '/')
 START_COMMENT = SLASH + ASTERISK
 END_COMMENT = ASTERISK + SLASH
@@ -22,6 +23,13 @@ def rid_whole_comments(line):
         opening_index = line.find(START_COMMENT)
     return line
 
+def rid_consecutive_spaces(line):
+    result = ""
+    for i in range(len(line)):
+        if i > 0 and line[i] == EMPTY_SPACE and line[i-1] == EMPTY_SPACE:
+            continue
+        result += line[i]
+    return result
 
 # Read first line in input program
 line = txt.readline()
@@ -55,6 +63,9 @@ while len(line):
 
         # Remove spaces in the beginning of the string
         line = line.lstrip()
+
+        # Remove consecutive spaces
+        line = rid_consecutive_spaces(line)
 
         # Removes empty lines
         if line == '':
