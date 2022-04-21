@@ -5,8 +5,7 @@
 txt = open('finalp1.txt')
 f = open('finalp2.txt', 'w')
 
-EMPTY_SPACE = ' '
-(ASTERISK, SLASH) = ('*', '/')
+(ASTERISK, SLASH, EMPTY_SPACE) = ('*', '/', ' ')
 START_COMMENT = SLASH + ASTERISK
 END_COMMENT = ASTERISK + SLASH
 
